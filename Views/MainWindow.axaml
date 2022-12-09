@@ -51,7 +51,7 @@
                 <local:StatsView DataContext="{Binding Stats}"/>
             </TabItem>
             <TabItem Header="Charts">
-                <TextBox Text="TBD" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <local:ChartView DataContext="{Binding Chart}"/>
             </TabItem>
         </TabControl>
     </DockPanel>

@@ -8,19 +8,24 @@ namespace SlayTheStats.Services;
 
 public class RunManager {
     private string RunFolder { get; set; }
+    private List<string> CharactersToLoad { get; set; }
 
     public List<Run> Runs { get; set; } = new();
 
-    public RunManager(string runFolder){
+    public RunManager(string runFolder, List<string> characters){
         RunFolder = runFolder;
+        CharactersToLoad = characters;
     }
 
     public void LoadRuns(){
         var di = new DirectoryInfo(RunFolder);
-        foreach(var character in di.EnumerateDirectories()){
-            foreach(var run in character.EnumerateFiles("*.run")){
-                LoadRun(run);
-            }        
+        foreach(var character in CharactersToLoad){
+            foreach(var characterFolder in di.EnumerateDirectories($"{character}*"))
+            {                
+                foreach(var run in characterFolder.EnumerateFiles("*.run")){
+                    LoadRun(run);
+                }        
+            }
         }
     }
 
@@ -32,14 +37,18 @@ public class RunManager {
         }
         
         var run = JsonSerializer.Deserialize<Run>(runAsText);
+        run.Character = runFile.Directory.Name;
         Runs.Add(run);
     }
 
     public List<string> LoadCharacterList(){
         var di = new DirectoryInfo(RunFolder);
         var dirs = new List<string>();
-        foreach(var dir in di.EnumerateDirectories()){
-            dirs.Add(dir.Name);
+        foreach(var characterToLoad in CharactersToLoad)
+        {
+            foreach(var dir in di.EnumerateDirectories($"{characterToLoad}*")){
+                dirs.Add(dir.Name);
+            }
         }
         return dirs;
     }

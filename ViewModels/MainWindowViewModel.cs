@@ -21,6 +21,7 @@ public class MainWindowViewModel : ViewModelBase
     private SettingsManager Settings = new();
     public ObservableCollection<RunViewModel> Runs { get; } = new();
     public StatsViewModel Stats { get; set; } 
+    public ChartViewModel Chart { get; set; }
     public ObservableCollection<BaseFilterViewModel> Filters { get; set; } = new();
     public ObservableCollection<BaseFilterViewModel> AvailableFilters { get; set; } = new();
     public int SelectedFilter { get; set; }
@@ -29,7 +30,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel(){
         Settings.LoadSettings();
-        Manager = new RunManager(Settings.CurrentSettings.RunFolder);
+        Manager = new RunManager(Settings.CurrentSettings.RunFolder, Settings.CurrentSettings.CharactersToLoad);
         RxApp.MainThreadScheduler.Schedule(LoadCharacterList);
         RxApp.MainThreadScheduler.Schedule(LoadRuns);
         RxApp.MainThreadScheduler.Schedule(LoadAvailableFilters);
@@ -41,6 +42,7 @@ public class MainWindowViewModel : ViewModelBase
             Runs.Add(new RunViewModel(run));
         }
         Stats = new StatsViewModel(Runs);
+        Chart = new ChartViewModel(Runs);
     }
 
     private async void LoadCharacterList() {

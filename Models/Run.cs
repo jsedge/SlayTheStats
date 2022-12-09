@@ -13,7 +13,6 @@ public class Run
     [JsonPropertyName("victory")]
     public bool Victory { get; set; }
 
-    [JsonPropertyName("character_chosen")]
     public string Character { get; set; }
 
     [JsonPropertyName("playtime")]
