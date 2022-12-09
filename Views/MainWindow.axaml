@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:SlayTheStats.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:SlayTheStats.Views"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="SlayTheStats.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="SlayTheStats">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Window.Resources>
+        <MenuFlyout x:Key="FilterFlyout" Placement="2">
+            <MenuItem Header="Delete" Command="{Binding DeleteFilter}"/>
+        </MenuFlyout>
+    </Window.Resources>
+
+    <DockPanel>
+        <ScrollViewer>
+            <StackPanel Margin="10" Width="250" DockPanel.Dock="Left" HorizontalAlignment="Left" Spacing="10">
+                <ListBox Items="{Binding Filters}" ContextFlyout="{StaticResource FilterFlyout}" SelectedIndex="{Binding SelectedFilter}">
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Margin" Value="0" />
+                        </Style>
+                    </ListBox.Styles>
+                </ListBox>            
+                <Button Command="{Binding ApplyFilter}" HorizontalAlignment="Stretch">Apply Filter</Button>
+                <Expander Header="Add Filters">
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Spacing="8">
+                        <ComboBox Items="{Binding AvailableFilters}" SelectedItem="{Binding FilterToAdd}" HorizontalAlignment="Stretch">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FilterName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Command="{Binding AddFilter}" HorizontalAlignment="Stretch">Add Filter</Button>
+                    </StackPanel>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+        <TabControl>
+            <TabItem Header="Run History">
+                <ListBox Items="{Binding Runs}"/>
+            </TabItem>
+            <TabItem Header="Stats">
+                <local:StatsView DataContext="{Binding Stats}"/>
+            </TabItem>
+            <TabItem Header="Charts">
+                <TextBox Text="TBD" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+
+</Window>

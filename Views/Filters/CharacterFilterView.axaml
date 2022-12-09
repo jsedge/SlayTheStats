@@ -1,0 +1,22 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="using:SlayTheStats.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SlayTheStats.Views.CharacterFilterView">
+    <UserControl.Resources>
+      <conv:CharacterConverter x:Key="CharacterConverter" />
+    </UserControl.Resources>
+    <Panel HorizontalAlignment="Stretch">
+      <Expander Header="Character Filter">
+          <ListBox Items="{Binding Characters}" SelectionMode="Multiple" SelectedItems="{Binding FilteredCharacters}">
+            <ListBox.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding, Converter={StaticResource CharacterConverter}}"/>
+              </DataTemplate>
+            </ListBox.ItemTemplate>
+          </ListBox>
+      </Expander>
+    </Panel>
+</UserControl>

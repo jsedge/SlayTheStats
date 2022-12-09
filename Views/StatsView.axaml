@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SlayTheStats.Views.StatsView">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="1.5*,1.5*,1.5*,1.5*">
+    <Grid.Styles>
+      <Style Selector="TextBlock">
+        <Setter Property="FontSize" Value="18" />
+      </Style>
+    </Grid.Styles>
+    <TextBlock Grid.Row="0" Text="Number of Runs: "/>
+    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Runs.Count}"/>
+    <TextBlock Grid.Row="1" Text="Winrate (%): "/>
+    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding WinRate, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="2" Text="Average Playtime (Minutes):"/>
+    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding AveragePlaytime, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="3" Text="Longest Run (Minutes):"/>
+    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding MaxPlaytime, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="4" Text="Shortest Run (Minutes):"/>
+    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding MinPlaytime, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="5" Text="Average Score:"/>
+    <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding AvgScore, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="6" Text="Highest Score:"/>
+    <TextBlock Grid.Row="6" Grid.Column="1" Text="{Binding MaxScore, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="7" Text="Lowest Score:"/>
+    <TextBlock Grid.Row="7" Grid.Column="1" Text="{Binding MinScore, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="8" Text="Average Floor reached:"/>
+    <TextBlock Grid.Row="8" Grid.Column="1" Text="{Binding AvgFloor, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="9" Text="Highest picked Neow Bonus:"/>
+    <TextBlock Grid.Row="9" Grid.Column="1" Text="{Binding MostFrequentNeowBonus}"/>
+    <TextBlock Grid.Row="1" Grid.Column="2" Text="Average Smiths:"/>
+    <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding AvgSmith, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="2" Grid.Column="2" Text="Most Smiths:"/>
+    <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding MaxSmith, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="3" Grid.Column="2" Text="Least Smiths:"/>
+    <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding MinSmith, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="4" Grid.Column="2" Text="Average Rests:"/>
+    <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding AvgRests, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="5" Grid.Column="2" Text="Most Rests:"/>
+    <TextBlock Grid.Row="5" Grid.Column="3" Text="{Binding MaxRests, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="6" Grid.Column="2" Text="Least Rests:"/>
+    <TextBlock Grid.Row="6" Grid.Column="3" Text="{Binding MinRests, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="7" Grid.Column="2" Text="Average Decksize:"/>
+    <TextBlock Grid.Row="7" Grid.Column="3" Text="{Binding AvgDeckSize, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="8" Grid.Column="2" Text="Biggest Deck:"/>
+    <TextBlock Grid.Row="8" Grid.Column="3" Text="{Binding MaxDeckSize, StringFormat={}{0:0.00}}"/>
+    <TextBlock Grid.Row="9" Grid.Column="2" Text="Smallest Deck:"/>
+    <TextBlock Grid.Row="9" Grid.Column="3" Text="{Binding MinDeckSize, StringFormat={}{0:0.00}}"/>
+  </Grid>
+</UserControl>
