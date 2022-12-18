@@ -73,6 +73,7 @@ public class MainWindowViewModel : ViewModelBase
         foreach(var run in runsToFilter){
             Runs.Add(new RunViewModel(run));
         }
+        Chart.ShowChart();
     }
 
     public void AddFilter() {

@@ -4,11 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SlayTheStats.Views.ChartView">
-  <ListBox Items="{Binding Runs}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <!-- <Carousel.ItemTemplate>
-      <DataTemplate>
-        <TextBlock Text="{Binding}" />
-      </DataTemplate>
-    </Carousel.ItemTemplate> -->
-  </ListBox>
+  <ScrollViewer>
+  <StackPanel>
+    <StackPanel Orientation="Horizontal">
+      <ComboBox Items="{Binding Charts}" SelectedItem="{Binding SelectedChart}"/>
+      <Button Command="{Binding ShowChart}">Show Chart</Button>
+    </StackPanel>
+    <ListBox Items="{Binding Items}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+  </StackPanel>
+  </ScrollViewer>
 </UserControl>

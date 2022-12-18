@@ -33,5 +33,9 @@ public class Run
     public List<string> Deck { get; set; }
     [JsonPropertyName("neow_bonus")]
     public string NeowBonus { get; set; }
+    [JsonPropertyName("killed_by")]
+    public string? Killer { get; set; }
+    [JsonPropertyName("items_purged")]
+    public List<string> CardRemovals { get; set; }
 }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using SlayTheStats.Models;
 
@@ -21,6 +22,10 @@ public class RunViewModel : ViewModelBase {
     public int Rests => _run.Rests;
     public int DeckSize => _run.Deck.Count;
     public string NeowBonus => _run.NeowBonus;
+    public string? Killer => _run.Killer;
+    public List<string> CardRemovals => _run.CardRemovals;
+    public List<string> Deck => _run.Deck;
+    public List<string> Relics => _run.Relics;
 
     public string Summary => $"{Character} A{Ascension} {(_run.Victory ? "Win" : "Loss")}";
 }
