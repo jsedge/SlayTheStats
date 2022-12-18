@@ -20,7 +20,7 @@ public class RunManager {
     public void LoadRuns(){
         var di = new DirectoryInfo(RunFolder);
         foreach(var character in CharactersToLoad){
-            foreach(var characterFolder in di.EnumerateDirectories($"{character}*"))
+            foreach(var characterFolder in di.EnumerateDirectories($"*{character}*"))
             {                
                 foreach(var run in characterFolder.EnumerateFiles("*.run")){
                     LoadRun(run);
@@ -46,7 +46,7 @@ public class RunManager {
         var dirs = new List<string>();
         foreach(var characterToLoad in CharactersToLoad)
         {
-            foreach(var dir in di.EnumerateDirectories($"{characterToLoad}*")){
+            foreach(var dir in di.EnumerateDirectories($"*{characterToLoad}*")){
                 dirs.Add(dir.Name);
             }
         }
