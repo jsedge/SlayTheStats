@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 namespace SlayTheStats.Models;
 public class Run
 {
+
     [JsonPropertyName("ascension_level")]
     public int Ascension { get; set; }
 
@@ -37,5 +38,9 @@ public class Run
     public string? Killer { get; set; }
     [JsonPropertyName("items_purged")]
     public List<string> CardRemovals { get; set; }
+    [JsonPropertyName("damage_taken")]
+    public List<Fight> Fights { get; set; }
 }
+
+
 

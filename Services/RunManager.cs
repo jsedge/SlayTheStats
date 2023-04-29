@@ -35,10 +35,16 @@ public class RunManager {
         using(var stream = runFile.OpenText()){
             runAsText = stream.ReadToEnd();
         }
-        
-        var run = JsonSerializer.Deserialize<Run>(runAsText);
-        run.Character = runFile.Directory.Name;
-        Runs.Add(run);
+        try{
+            var run = JsonSerializer.Deserialize<Run>(runAsText);
+            run.Character = runFile.Directory.Name;
+            Runs.Add(run);
+        }
+        catch(Exception e)
+        {
+            Console.WriteLine($"Failed to load {runFile}");
+            Console.WriteLine(e);
+        }
     }
 
     public List<string> LoadCharacterList(){

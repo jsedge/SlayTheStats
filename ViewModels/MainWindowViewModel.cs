@@ -59,6 +59,7 @@ public class MainWindowViewModel : ViewModelBase
         AvailableFilters.Add(new CharacterFilterViewModel());
         AvailableFilters.Add(new VictoryFilterViewModel());
         AvailableFilters.Add(new RelicsFilterViewModel());
+        AvailableFilters.Add(new BossFilterViewModel());
     }
 
     public void ApplyFilter(){
